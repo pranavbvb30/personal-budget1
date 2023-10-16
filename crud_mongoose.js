@@ -5,7 +5,8 @@ const budgetModel = require("./models/budget.schema ")
 let url = 'mongodb://127.0.0.1:27017/mongodb_demo2';
 
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(() => {
+        .then(() => 
+        {
             console.log("connected");
             budgetModel.find({})
                 .then((data) => {

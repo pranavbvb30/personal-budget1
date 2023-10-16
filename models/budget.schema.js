@@ -6,6 +6,7 @@ const budgetSchema = new mongoose.Schema({
         trim:true,
         required:true,
     },
+    
     budget:{
         type:Number,
         required:true
