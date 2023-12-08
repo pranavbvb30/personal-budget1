@@ -1,1 +1,127 @@
-Login
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('bg.png') no-repeat center center fixed; 
+            background-size: cover;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .new-user-line {
+            margin-top: 10px;
+            border-top: 1px solid black;
+            width: 100%;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        .sign-up-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        /* Homepage button style */
+        .homepage-button {
+            margin-top: 10px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .homepage-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="dashboard.html" method="post" onsubmit="return validateForm()">
+        <h1>Login</h1>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+
+        <div class="new-user-line">New User? <span class="sign-up-link" onclick="redirectToSignUp()">Sign Up</span></div>
+
+       
+        <button class="homepage-button" onclick="redirectToHomepage()">Homepage</button>
+    </form>
+
+    <script>
+        function validateForm() {
+           
+            return true;
+        }
+
+        function redirectToSignUp() {
+            
+            window.location.href = 'signup.html';
+        }
+
+        function redirectToHomepage() {
+            
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>
