@@ -99,7 +99,7 @@
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
                 <article class="text-box">
-                    <h1 tabindex="26"> Donut Chart   </h1>
+                    <h1 tabindex="26"> Donut Chart </h1>
                     <p tabindex="27">
                     <div id="d3DonutChart"></div>
                     </p>
@@ -133,16 +133,8 @@
             datasets: [
                 {
                     data: [],
-                    backgroundColor: [
-                        '#FF00F4',
-                        '#FF9E00',
-                        '#C3A068',
-                        '#A7C368',
-                        '#68C393',
-                        '#00D8FF',
-                        '#AE00FF',
-
-                    ],
+                    backgroundColor:  [],   
+                    
                 }
             ],
             labels: []
@@ -164,8 +156,8 @@
                 type:'pie',
                 data:dataSource,
                 options: {
-        responsive: false, // Disable responsiveness
-        maintainAspectRatio: false, // Disable aspect ratio 
+                  responsive: false, 
+                  maintainAspectRatio: false, 
                 },
             });
         }
@@ -174,13 +166,14 @@
             axios.get('http://localhost:3000/budget')
             .then(function(res) {
                 console.log(res.data);
-                for (var i=0;i<res.data.myBudget.length; i++)
+                for (var i=0;i<res.data.length; i++)
                 {
-                    dataSource.datasets[0].data[i]=res.data.myBudget[i].budget;
-                    dataSource.labels[i]=res.data.myBudget[i].title;
+                    dataSource.datasets[0].data[i]=res.data[i].budget;
+                    dataSource.labels[i]=res.data[i].title;
+                    dataSource.datasets[0].backgroundColor[i] = res.data[i].color;
                 } 
             })
-                .then(function () {
+                .then(function() {
                 createChart();
             });
         }
@@ -199,7 +192,7 @@
     function getBudgetAgain() {
         axios.get('http://localhost:3000/budget')
             .then(function (res) {
-                datum = res.data.myBudget;
+                datum = res.data;
                 console.log(datum);
             })
             .then(function () {
@@ -266,7 +259,7 @@
 
             slice.enter()
                 .insert("path")
-                .style("fill", function (d) { return color(d.data.title); })
+                .style("fill", function (d,i) { return color(i); })
                 .attr("class", "slice");
 
             slice
